@@ -1,0 +1,62 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://unpkg.com/htmx.org@2.0.1"
+      integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
+      crossorigin="anonymous"
+    ></script>
+    <title>Lab1</title>
+  </head>
+  <body>
+    <h1>Ceaser Cipher For Secret Messages</h1>
+    <form hx-post="/encrypt">
+      <label for="plainText">Plain Text</label>
+      <input type="text" id="plainText" name="plainText" />
+      <br /><br />
+      <label for="key">key</label>
+      <input type="number" id="key" name="key" />
+      <br />
+      <br />
+      <button type="submit">Encrypt</button>
+    </form>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caesar Cipher</title>
+  </head>
+  <body>
+    <h1>Caesar Cipher</h1>
+    <form action="/encrypt" method="post">
+      <label for="plainText">Plain Text:</label>
+      <input type="text" id="plainText" name="plainText" required />
+      <label for="shift">Shift:</label>
+      <input type="number" id="shift" name="shift" required />
+      <button type="submit">Encrypt</button>
+    </form>
+
+    {{if .EncryptedText}}
+    <h2>Encrypted Text</h2>
+    <p>{{.EncryptedText}}</p>
+    {{end}}
+
+    <form action="/decrypt" method="post">
+      <label for="encryptedText">Encrypted Text:</label>
+      <input type="text" id="encryptedText" name="encryptedText" required />
+      <label for="shift">Shift:</label>
+      <input type="number" id="shift" name="shift" required />
+      <button type="submit">Decrypt</button>
+    </form>
+
+    {{if .DecryptedText}}
+    <h2>Decrypted Text</h2>
+    <p>{{.DecryptedText}}</p>
+    {{end}}
+  </body>
+</html>
